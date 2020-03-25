@@ -1,6 +1,10 @@
 This module creates a number of Cloudwatch alarms that alert on Cloudtrail
 events; they are meant to provide compliance with the AWS CIS benchmark.
 
+This module uses Cloudtrail logs which have been written to a Cloudwatch
+logs group; this means for organizations with an organization Cloudtrail,
+you only need to put this in the master account.
+
 The following alarms are available in this module; all can be toggled on
 or off, but by default all alarms are active.
 
