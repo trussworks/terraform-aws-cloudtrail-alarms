@@ -1,3 +1,5 @@
+# terraform-aws-cloudtrail-alarms
+
 This module creates a number of Cloudwatch alarms that alert on Cloudtrail
 events; they are meant to provide compliance with the AWS CIS benchmark.
 
