@@ -33,11 +33,25 @@ resource "aws_cloudwatch_metric_alarm" "unauthorized_api_calls" {
   }
 }
 
-resource "aws_cloudwatch_log_metric_filter" "no_mfa_console_signin" {
-  count = var.no_mfa_console_login ? 1 : 0
+resource "aws_cloudwatch_log_metric_filter" "no_mfa_console_signin_assumed_role" {
+  count = var.no_mfa_console_login && ! var.disable_assumed_role_login_alerts ? 1 : 0
 
   name           = "NoMFAConsoleSignin"
   pattern        = "{ ($.eventName = \"ConsoleLogin\") && ($.additionalEventData.MFAUsed != \"Yes\") }"
+  log_group_name = var.cloudtrail_log_group_name
+
+  metric_transformation {
+    name      = "NoMFAConsoleSignin"
+    namespace = var.alarm_namespace
+    value     = "1"
+  }
+}
+
+resource "aws_cloudwatch_log_metric_filter" "no_mfa_console_signin_no_assumed_role" {
+  count = var.no_mfa_console_login && var.disable_assumed_role_login_alerts ? 1 : 0
+
+  name           = "NoMFAConsoleSignin"
+  pattern        = "{ ($.eventName = \"ConsoleLogin\") && ($.additionalEventData.MFAUsed != \"Yes\") && ($.userIdentity.arn != \"*assumed-role*\") }"
   log_group_name = var.cloudtrail_log_group_name
 
   metric_transformation {
@@ -53,7 +67,7 @@ resource "aws_cloudwatch_metric_alarm" "no_mfa_console_signin" {
   alarm_name                = "NoMFAConsoleSignin"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
-  metric_name               = aws_cloudwatch_log_metric_filter.no_mfa_console_signin[0].id
+  metric_name               = var.disable_assumed_role_login_alerts ? aws_cloudwatch_log_metric_filter.no_mfa_console_signin_no_assumed_role[0].id : aws_cloudwatch_log_metric_filter.no_mfa_console_signin_assumed_role[0].id
   namespace                 = var.alarm_namespace
   period                    = "300"
   statistic                 = "Sum"

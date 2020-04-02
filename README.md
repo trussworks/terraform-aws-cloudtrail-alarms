@@ -56,6 +56,7 @@ module "cloudtrail_alarms" {
 | cloudtrail\_cfg\_changes | Toggle Cloudtrail config changes alarm | `bool` | `true` | no |
 | cloudtrail\_log\_group\_name | Cloudwatch log group name for Cloudtrail logs | `string` | `"cloudtrail-events"` | no |
 | console\_signin\_failures | Toggle console signin failures alarm | `bool` | `true` | no |
+| disable\_assumed\_role\_login\_alerts | Toggle to disable assumed role console login alerts - violates CIS Benchmark | `bool` | `false` | no |
 | disable\_or\_delete\_cmk | Toggle disable or delete CMK alarm | `bool` | `true` | no |
 | iam\_changes | Toggle IAM changes alarm | `bool` | `true` | no |
 | nacl\_changes | Toggle network ACL changes alarm | `bool` | `true` | no |

@@ -17,6 +17,14 @@ variable "cloudtrail_log_group_name" {
   default     = "cloudtrail-events"
 }
 
+# Behavior Toggles
+
+variable "disable_assumed_role_login_alerts" {
+  description = "Toggle to disable assumed role console login alerts - violates CIS Benchmark"
+  type        = bool
+  default     = false
+}
+
 # Alarm Toggles
 
 variable "aws_config_changes" {
