@@ -1,9 +1,8 @@
 resource "aws_cloudwatch_log_metric_filter" "unauthorized_api_calls" {
-  count = var.unauthorized_api_calls ? 1 : 0
-  for_each          = var.accounts
+  count = var.unauthorized_api_calls ? length(var.accounts)  : 0
 
   name           = "UnauthorizedAPICalls"
-  pattern        = "{ ($.errorCode = \"*UnauthorizedOperation\" && $.userIdentity.accountId = ${each.value.account_id}) || ($.errorCode = \"AccessDenied*\" && $.userIdentity.accountId = ${each.value.account_id} ) }"
+  pattern        = "{ ($.errorCode = \"*UnauthorizedOperation\" && $.userIdentity.accountId = ${element(var.accounts, count.index).account_id}) || ($.errorCode = \"AccessDenied*\" && $.userIdentity.accountId = ${element(var.accounts, count.index).account_id} ) }"
   log_group_name = var.cloudtrail_log_group_name
 
   metric_transformation {
@@ -14,8 +13,7 @@ resource "aws_cloudwatch_log_metric_filter" "unauthorized_api_calls" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "unauthorized_api_calls" {
-  count = var.unauthorized_api_calls ? 1 : 0
-  for_each          = var.accounts
+  count = var.unauthorized_api_calls ? length(var.accounts)  : 0
 
   alarm_name                = "UnauthorizedAPICalls"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
@@ -25,7 +23,7 @@ resource "aws_cloudwatch_metric_alarm" "unauthorized_api_calls" {
   period                    = "300"
   statistic                 = "Sum"
   threshold                 = "1"
-  alarm_description         = "Alert for account ${each.value.account_name} (ID: ${each.value.account_id}). Monitoring unauthorized API calls will help reveal application errors and may reduce time to detect malicious activity."
+  alarm_description         = "Alert for account ${element(var.accounts, count.index).account_name} (ID: ${element(var.accounts, count.index).account_id}). Monitoring unauthorized API calls will help reveal application errors and may reduce time to detect malicious activity."
   alarm_actions             = [var.alarm_sns_topic_arn]
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
