@@ -4,7 +4,7 @@ variable "accounts" {
   description = "To split alert by account, add account IDs of interest"
   type = list(
     object({
-      account_id = string
+      account_id   = string
       account_name = string
       }
     )

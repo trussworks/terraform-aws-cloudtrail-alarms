@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_log_metric_filter" "unauthorized_api_calls" {
-  count = var.unauthorized_api_calls ? length(var.accounts)  : 0
+  count = var.unauthorized_api_calls ? length(var.accounts) : 0
 
   name           = "UnauthorizedAPICalls"
   pattern        = "{ ($.errorCode = \"*UnauthorizedOperation\" && $.userIdentity.accountId = ${element(var.accounts, count.index).account_id}) || ($.errorCode = \"AccessDenied*\" && $.userIdentity.accountId = ${element(var.accounts, count.index).account_id} ) }"
@@ -13,7 +13,7 @@ resource "aws_cloudwatch_log_metric_filter" "unauthorized_api_calls" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "unauthorized_api_calls" {
-  count = var.unauthorized_api_calls ? length(var.accounts)  : 0
+  count = var.unauthorized_api_calls ? length(var.accounts) : 0
 
   alarm_name                = "UnauthorizedAPICalls"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
