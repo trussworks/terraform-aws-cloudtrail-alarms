@@ -2,7 +2,7 @@ version: 2
 jobs:
   validate:
     docker:
-      - image: trussworks/circleci-docker-primary:4013bb8c2428b3e2755d90a922abb2a6cea37ab4
+      - image: trussworks/circleci-docker-primary:2f6321ed86ed79bfed23b04dd6dfdbe7bc943fdc
     steps:
       - checkout
       - restore_cache:
