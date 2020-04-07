@@ -22,7 +22,7 @@ resource "aws_cloudwatch_log_metric_filter" "unauthorized_api_calls" {
 resource "aws_cloudwatch_metric_alarm" "unauthorized_api_calls" {
   count = var.unauthorized_api_calls ? length(var.accounts) : 0
 
-  alarm_name                = "UnauthorizedAPICalls ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "UnauthorizedAPICalls for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.unauthorized_api_calls[0].id
@@ -72,7 +72,7 @@ resource "aws_cloudwatch_log_metric_filter" "no_mfa_console_signin_no_assumed_ro
 resource "aws_cloudwatch_metric_alarm" "no_mfa_console_signin" {
   count = var.no_mfa_console_login ? length(var.accounts) : 0
 
-  alarm_name                = "NoMFAConsoleSignin ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "NoMFAConsoleSignin for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = var.disable_assumed_role_login_alerts ? aws_cloudwatch_log_metric_filter.no_mfa_console_signin_no_assumed_role[0].id : aws_cloudwatch_log_metric_filter.no_mfa_console_signin_assumed_role[0].id
@@ -107,7 +107,7 @@ resource "aws_cloudwatch_log_metric_filter" "root_usage" {
 resource "aws_cloudwatch_metric_alarm" "root_usage" {
   count = var.root_usage ? length(var.accounts) : 0
 
-  alarm_name                = "RootUsage ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "RootUsage for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.root_usage[0].id
@@ -128,7 +128,7 @@ resource "aws_cloudwatch_metric_alarm" "root_usage" {
 resource "aws_cloudwatch_log_metric_filter" "iam_changes" {
   count = var.iam_changes ? length(var.accounts) : 0
 
-  name           = "IAMChangesAccount ${element(var.accounts, count.index).account_name}"
+  name           = "IAMChanges ${element(var.accounts, count.index).account_name}"
   pattern        = "{ ${local.iam_changes_pattern} && ($.userIdentity.accountId = ${element(var.accounts, count.index).account_id}) }"
   log_group_name = var.cloudtrail_log_group_name
 
@@ -142,7 +142,7 @@ resource "aws_cloudwatch_log_metric_filter" "iam_changes" {
 resource "aws_cloudwatch_metric_alarm" "iam_changes" {
   count = var.iam_changes ? length(var.accounts) : 0
 
-  alarm_name                = "IAMChangesAccount ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "IAMChanges for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.iam_changes[0].id
@@ -177,7 +177,7 @@ resource "aws_cloudwatch_log_metric_filter" "cloudtrail_cfg_changes" {
 resource "aws_cloudwatch_metric_alarm" "cloudtrail_cfg_changes" {
   count = var.cloudtrail_cfg_changes ? length(var.accounts) : 0
 
-  alarm_name                = "CloudTrailCfgChanges ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "CloudTrailCfgChanges for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.cloudtrail_cfg_changes[0].id
@@ -212,7 +212,7 @@ resource "aws_cloudwatch_log_metric_filter" "console_signin_failures" {
 resource "aws_cloudwatch_metric_alarm" "console_signin_failures" {
   count = var.console_signin_failures ? length(var.accounts) : 0
 
-  alarm_name                = "ConsoleSigninFailures ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "ConsoleSigninFailures for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.console_signin_failures[0].id
@@ -247,7 +247,7 @@ resource "aws_cloudwatch_log_metric_filter" "disable_or_delete_cmk" {
 resource "aws_cloudwatch_metric_alarm" "disable_or_delete_cmk" {
   count = var.disable_or_delete_cmk ? length(var.accounts) : 0
 
-  alarm_name                = "DisableOrDeleteCMK ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "DisableOrDeleteCMK for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.disable_or_delete_cmk[0].id
@@ -282,7 +282,7 @@ resource "aws_cloudwatch_log_metric_filter" "s3_bucket_policy_changes" {
 resource "aws_cloudwatch_metric_alarm" "s3_bucket_policy_changes" {
   count = var.s3_bucket_policy_changes ? length(var.accounts) : 0
 
-  alarm_name                = "S3BucketPolicyChanges ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "S3BucketPolicyChanges for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.s3_bucket_policy_changes[0].id
@@ -317,7 +317,7 @@ resource "aws_cloudwatch_log_metric_filter" "aws_config_changes" {
 resource "aws_cloudwatch_metric_alarm" "aws_config_changes" {
   count = var.aws_config_changes ? length(var.accounts) : 0
 
-  alarm_name                = "AWSConfigChanges ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "AWSConfigChanges for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.aws_config_changes[0].id
@@ -352,7 +352,7 @@ resource "aws_cloudwatch_log_metric_filter" "security_group_changes" {
 resource "aws_cloudwatch_metric_alarm" "security_group_changes" {
   count = var.security_group_changes ? length(var.accounts) : 0
 
-  alarm_name                = "SecurityGroupChanges ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "SecurityGroupChanges for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.security_group_changes[0].id
@@ -387,7 +387,7 @@ resource "aws_cloudwatch_log_metric_filter" "nacl_changes" {
 resource "aws_cloudwatch_metric_alarm" "nacl_changes" {
   count = var.nacl_changes ? length(var.accounts) : 0
 
-  alarm_name                = "NACLChanges ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "NACLChanges for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.nacl_changes[0].id
@@ -422,7 +422,7 @@ resource "aws_cloudwatch_log_metric_filter" "network_gw_changes" {
 resource "aws_cloudwatch_metric_alarm" "network_gw_changes" {
   count = var.network_gw_changes ? length(var.accounts) : 0
 
-  alarm_name                = "NetworkGWChanges ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "NetworkGWChanges for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.network_gw_changes[0].id
@@ -457,7 +457,7 @@ resource "aws_cloudwatch_log_metric_filter" "route_table_changes" {
 resource "aws_cloudwatch_metric_alarm" "route_table_changes" {
   count = var.route_table_changes ? length(var.accounts) : 0
 
-  alarm_name                = "RouteTableChanges ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "RouteTableChanges for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.route_table_changes[0].id
@@ -492,7 +492,7 @@ resource "aws_cloudwatch_log_metric_filter" "vpc_changes" {
 resource "aws_cloudwatch_metric_alarm" "vpc_changes" {
   count = var.vpc_changes ? length(var.accounts) : 0
 
-  alarm_name                = "VPCChanges ${element(var.accounts, count.index).account_name}"
+  alarm_name                = "VPCChanges for ${element(var.accounts, count.index).account_name} account"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = aws_cloudwatch_log_metric_filter.vpc_changes[0].id
