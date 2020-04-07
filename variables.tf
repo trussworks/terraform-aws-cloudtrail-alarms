@@ -1,7 +1,7 @@
 # Setup Variables
 
 variable "accounts" {
-  description = "To split alert by account, add account IDs of interest"
+  description = "List of account objects containing the account_id and account_name to alert on."
   type = list(
     object({
       account_id   = string

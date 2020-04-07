@@ -56,7 +56,7 @@ module "cloudtrail_alarms" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| accounts | To split alert by account, add account IDs of interest | <pre>list(<br>    object({<br>      account_id   = string<br>      account_name = string<br>      }<br>    )<br>  )</pre> | n/a | yes |
+| accounts | List of account objects containing the account\_id and account\_name to alert on. | <pre>list(<br>    object({<br>      account_id   = string<br>      account_name = string<br>      }<br>    )<br>  )</pre> | n/a | yes |
 | alarm\_namespace | Namespace for generated Cloudwatch alarms | `string` | `"CISBenchmark"` | no |
 | alarm\_sns\_topic\_arn | SNS topic ARN for generated alarms | `string` | n/a | yes |
 | aws\_config\_changes | Toggle AWS Config changes alarm | `bool` | `true` | no |
