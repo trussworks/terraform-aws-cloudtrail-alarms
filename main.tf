@@ -1,3 +1,7 @@
+locals {
+  resource_tags = merge(var.tags, {"Automation"="Terraform"})
+}
+
 resource "aws_cloudwatch_log_metric_filter" "unauthorized_api_calls" {
   count = var.unauthorized_api_calls ? 1 : 0
 
@@ -28,9 +32,7 @@ resource "aws_cloudwatch_metric_alarm" "unauthorized_api_calls" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "no_mfa_console_signin_assumed_role" {
@@ -77,9 +79,7 @@ resource "aws_cloudwatch_metric_alarm" "no_mfa_console_signin" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "root_usage" {
@@ -112,9 +112,7 @@ resource "aws_cloudwatch_metric_alarm" "root_usage" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "iam_changes" {
@@ -147,9 +145,7 @@ resource "aws_cloudwatch_metric_alarm" "iam_changes" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "cloudtrail_cfg_changes" {
@@ -182,9 +178,7 @@ resource "aws_cloudwatch_metric_alarm" "cloudtrail_cfg_changes" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "console_signin_failures" {
@@ -217,9 +211,7 @@ resource "aws_cloudwatch_metric_alarm" "console_signin_failures" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "disable_or_delete_cmk" {
@@ -252,9 +244,7 @@ resource "aws_cloudwatch_metric_alarm" "disable_or_delete_cmk" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "s3_bucket_policy_changes" {
@@ -287,9 +277,7 @@ resource "aws_cloudwatch_metric_alarm" "s3_bucket_policy_changes" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "aws_config_changes" {
@@ -322,9 +310,7 @@ resource "aws_cloudwatch_metric_alarm" "aws_config_changes" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "security_group_changes" {
@@ -357,9 +343,7 @@ resource "aws_cloudwatch_metric_alarm" "security_group_changes" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "nacl_changes" {
@@ -392,9 +376,7 @@ resource "aws_cloudwatch_metric_alarm" "nacl_changes" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "network_gw_changes" {
@@ -427,9 +409,7 @@ resource "aws_cloudwatch_metric_alarm" "network_gw_changes" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "route_table_changes" {
@@ -462,9 +442,7 @@ resource "aws_cloudwatch_metric_alarm" "route_table_changes" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "vpc_changes" {
@@ -497,7 +475,5 @@ resource "aws_cloudwatch_metric_alarm" "vpc_changes" {
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
 
-  tags = {
-    Automation = "Terraform"
-  }
+  tags = local.resource_tags
 }
