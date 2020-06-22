@@ -66,6 +66,7 @@ module "cloudtrail_alarms" {
 | route\_table\_changes | Toggle route table changes alarm | `bool` | `true` | no |
 | s3\_bucket\_policy\_changes | Toggle S3 bucket policy changes alarm | `bool` | `true` | no |
 | security\_group\_changes | Toggle security group changes alarm | `bool` | `true` | no |
+| tags | Tags for resources created | `map(string)` | `{}` | no |
 | unauthorized\_api\_calls | Toggle unauthorized api calls alarm | `bool` | `true` | no |
 | vpc\_changes | Toggle VPC changes alarm | `bool` | `true` | no |
 

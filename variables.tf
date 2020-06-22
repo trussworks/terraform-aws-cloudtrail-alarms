@@ -99,6 +99,12 @@ variable "security_group_changes" {
   default     = true
 }
 
+variable "tags" {
+  description = "Tags for resources created"
+  type        = map(string)
+  default     = {}
+}
+
 variable "unauthorized_api_calls" {
   description = "Toggle unauthorized api calls alarm"
   type        = bool
