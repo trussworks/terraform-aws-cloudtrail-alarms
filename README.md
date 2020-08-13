@@ -40,16 +40,23 @@ module "cloudtrail_alarms" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | ~> 0.12.0 |
+| aws | ~> 2.70 |
+
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
+| aws | ~> 2.70 |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | alarm\_namespace | Namespace for generated Cloudwatch alarms | `string` | `"CISBenchmark"` | no |
 | alarm\_sns\_topic\_arn | SNS topic ARN for generated alarms | `string` | n/a | yes |
 | aws\_config\_changes | Toggle AWS Config changes alarm | `bool` | `true` | no |
