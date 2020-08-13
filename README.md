@@ -45,12 +45,13 @@ module "cloudtrail_alarms" {
 | Name | Version |
 |------|---------|
 | terraform | ~> 0.12.0 |
+| aws | ~> 2.70 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
+| aws | ~> 2.70 |
 
 ## Inputs
 
