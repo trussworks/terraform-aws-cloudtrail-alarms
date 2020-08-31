@@ -44,14 +44,14 @@ module "cloudtrail_alarms" {
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.12.0 |
-| aws | ~> 2.70 |
+| terraform | ~> 0.13.0 |
+| aws | ~> 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | ~> 2.70 |
+| aws | ~> 3.0 |
 
 ## Inputs
 
