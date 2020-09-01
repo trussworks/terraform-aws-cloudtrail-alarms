@@ -10,20 +10,20 @@ you only need to put this in the master account.
 The following alarms are available in this module; all can be toggled on
 or off, but by default all alarms are active.
 
-* AWS Config changes
-* Cloudtrail config changes
-* Console signin failures
-* Disabling or deleting CMK
-* IAM changes
-* Network ACL changes
-* Network gateway changes
-* No MFA console logins
-* Root account usage
-* Route table changes
-* S3 bucket policy changes
-* Security group changes
-* Unauthorized API calls
-* VPC changes
+- AWS Config changes
+- Cloudtrail config changes
+- Console signin failures
+- Disabling or deleting CMK
+- IAM changes
+- Network ACL changes
+- Network gateway changes
+- No MFA console logins
+- Root account usage
+- Route table changes
+- S3 bucket policy changes
+- Security group changes
+- Unauthorized API calls
+- VPC changes
 
 These alarms were adapted from those in
 <https://github.com/nozaq/terraform-aws-secure-baseline>.
@@ -39,19 +39,25 @@ module "cloudtrail_alarms" {
 }
 ```
 
+## Terraform Versions
+
+Terraform 0.13. Pin module version to `~> 2.X`. Submit pull-requests to `master` branch.
+
+Terraform 0.12. Pin module version to `~> 1.X`. Submit pull-requests to `terraform012` branch.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.12.0 |
-| aws | ~> 2.70 |
+| terraform | ~> 0.13.0 |
+| aws | ~> 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | ~> 2.70 |
+| aws | ~> 3.0 |
 
 ## Inputs
 
@@ -81,4 +87,3 @@ module "cloudtrail_alarms" {
 No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
