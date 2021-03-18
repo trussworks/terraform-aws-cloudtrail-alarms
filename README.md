@@ -59,6 +59,17 @@ Terraform 0.12. Pin module version to `~> 1.X`. Submit pull-requests to `terrafo
 |------|---------|
 | aws | >= 3.0 |
 
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aws_cloudwatch_log_metric_filter](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter) |
+| [aws_cloudwatch_metric_alarm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -85,5 +96,4 @@ Terraform 0.12. Pin module version to `~> 1.X`. Submit pull-requests to `terrafo
 ## Outputs
 
 No output.
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
