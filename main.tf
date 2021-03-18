@@ -247,7 +247,7 @@ resource "aws_cloudwatch_metric_alarm" "disable_or_delete_cmk" {
   period                    = "300"
   statistic                 = "Sum"
   threshold                 = "1"
-  alarm_description         = "Monitoring failed console logins may decrease lead time to detect an attempt to brute force a credential, which may provide an indicator, such as source IP, that can be used in other event correlation."
+  alarm_description         = "Data encrypted with disabled or deleted keys will no longer be accessible."
   alarm_actions             = [var.alarm_sns_topic_arn]
   treat_missing_data        = "notBreaching"
   insufficient_data_actions = []
