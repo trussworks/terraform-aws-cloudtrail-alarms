@@ -34,7 +34,7 @@ resource "aws_cloudwatch_metric_alarm" "unauthorized_api_calls" {
 }
 
 resource "aws_cloudwatch_log_metric_filter" "no_mfa_console_signin_assumed_role" {
-  count = var.no_mfa_console_login && ! var.disable_assumed_role_login_alerts ? 1 : 0
+  count = var.no_mfa_console_login && !var.disable_assumed_role_login_alerts ? 1 : 0
 
   name           = "NoMFAConsoleSignin"
   pattern        = "{ ($.eventName = \"ConsoleLogin\") && ($.additionalEventData.MFAUsed != \"Yes\") }"
