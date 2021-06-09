@@ -15,8 +15,7 @@ func TestTerraformAwsCloudTrailAlarms(t *testing.T) {
 
 	logs := aws.NewCloudWatchLogsClient(t, awsRegion)
 	logGroupNameVar := "test"
-	logGroupInput := cloudwatchlogs.CreateLogGroupInput{LogGroupName: &logGroupNameVar}
-	logs.CreateLogGroup(&logGroupInput)
+	logs.CreateLogGroup(&cloudwatchlogs.CreateLogGroupInput{LogGroupName: &logGroupNameVar})
 	t.Parallel()
 
 	tempTestFolder := test_structure.CopyTerraformFolderToTemp(t, "../", ".")
