@@ -22,10 +22,10 @@ func TestTerraformAwsCloudTrailAlarms(t *testing.T) {
 	tempTestFolder := test_structure.CopyTerraformFolderToTemp(t, "../", ".")
 	alarm_sns_topic_arn := "arn:aws:cloudwatch:us-west-2:123456789012:alarm:myCloudWatchAlarm-CPUAlarm-UXMMZK36R55Z"
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
-		
+
 		// The path to where our Terraform code is located
 		TerraformDir: tempTestFolder,
-		
+
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
 			"alarm_sns_topic_arn": alarm_sns_topic_arn,
