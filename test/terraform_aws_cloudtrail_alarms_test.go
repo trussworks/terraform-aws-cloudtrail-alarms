@@ -3,8 +3,8 @@ package test
 import (
 	"testing"
 
-	"github.com/gruntwork-io/terratest/modules/aws"
-	"github.com/aws/aws-sdk-go/service/cloudwatchlogs"
+	// "github.com/gruntwork-io/terratest/modules/aws"
+	// "github.com/aws/aws-sdk-go/service/cloudwatchlogs"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	test_structure "github.com/gruntwork-io/terratest/modules/test-structure"
 
@@ -13,9 +13,9 @@ import (
 func TestTerraformAwsCloudTrailAlarms(t *testing.T) {
 	awsRegion := "us-west-2"
 
-	logs := aws.NewCloudWatchLogsClient(t, awsRegion)
-	logGroupNameVar := "test"
-	logs.CreateLogGroup(&cloudwatchlogs.CreateLogGroupInput{LogGroupName: &logGroupNameVar})
+	// logs := aws.NewCloudWatchLogsClient(t, awsRegion)
+	// logGroupNameVar := "test"
+	// logs.CreateLogGroup(&cloudwatchlogs.CreateLogGroupInput{LogGroupName: &logGroupNameVar})
 	t.Parallel()
 
 	tempTestFolder := test_structure.CopyTerraformFolderToTemp(t, "../", ".")
