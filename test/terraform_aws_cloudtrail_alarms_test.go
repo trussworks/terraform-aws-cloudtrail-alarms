@@ -1,9 +1,12 @@
 package test
 
 import (
+	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/gruntwork-io/terratest/modules/random"
 	test_structure "github.com/gruntwork-io/terratest/modules/test-structure"
 
 )
@@ -13,8 +16,8 @@ func TestTerraformAwsCloudTrailAlarms(t *testing.T) {
 
 	t.Parallel()
 
-	tempTestFolder := test_structure.CopyTerraformFolderToTemp(t, "../", ".")
-	alarm_sns_topic_arn := "arn:aws:cloudwatch:us-west-2:123456789012:alarm:myCloudWatchAlarm-CPUAlarm-UXMMZK36R55Z"
+	tempTestFolder := test_structure.CopyTerraformFolderToTemp(t, "../", "examples/simple")
+	testName := fmt.Sprintf("terratest-aws-cloutrail-alarms-%s", strings.ToLower(random.UniqueId()))
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 
 		// The path to where our Terraform code is located
@@ -22,8 +25,8 @@ func TestTerraformAwsCloudTrailAlarms(t *testing.T) {
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"alarm_sns_topic_arn": alarm_sns_topic_arn,
-			"cloudtrail_log_group_name": "test",
+			"sns_topic_name": testName,
+			"log_group_name": testName,
 		},
 
 		// Environment variables to set when running Terraform
