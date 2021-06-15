@@ -1,5 +1,5 @@
 locals {
-  resource_tags = merge(var.tags, {"Automation"="Terraform"})
+  resource_tags = merge(var.tags, { "Automation" = "Terraform" })
 }
 
 resource "aws_cloudwatch_log_metric_filter" "unauthorized_api_calls" {
