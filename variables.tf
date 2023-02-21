@@ -6,6 +6,11 @@ variable "alarm_namespace" {
   default     = "CISBenchmark"
 }
 
+variable "alarm_prefix" {
+  description = "Prefix for the alarm name"
+  type        = string
+}
+
 variable "alarm_sns_topic_arn" {
   description = "SNS topic ARN for generated alarms"
   type        = string
