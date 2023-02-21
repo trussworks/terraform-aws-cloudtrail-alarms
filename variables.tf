@@ -9,6 +9,7 @@ variable "alarm_namespace" {
 variable "alarm_prefix" {
   description = "Prefix for the alarm name"
   type        = string
+  default     = ""
 }
 
 variable "alarm_sns_topic_arn" {
