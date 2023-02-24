@@ -45,7 +45,7 @@ Terraform 0.13. Pin module version to `~> 2.X`. Submit pull-requests to `master`
 
 Terraform 0.12. Pin module version to `~> 1.X`. Submit pull-requests to `terraform012` branch.
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -124,4 +124,4 @@ No modules.
 ## Outputs
 
 No outputs.
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
