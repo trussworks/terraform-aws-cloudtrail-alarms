@@ -1,6 +1,6 @@
 locals {
   resource_tags = merge(var.tags, { "Automation" = "Terraform" })
-  alarm_prefix = var.alarm_prefix != "" ? "${var.alarm_prefix}-" : ""
+  alarm_prefix  = var.alarm_prefix != "" ? "${var.alarm_prefix}-" : ""
 }
 
 resource "aws_cloudwatch_log_metric_filter" "unauthorized_api_calls" {
