@@ -102,6 +102,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | alarm\_namespace | Namespace for generated Cloudwatch alarms | `string` | `"CISBenchmark"` | no |
+| alarm\_prefix | Prefix for the alarm name | `string` | `""` | no |
 | alarm\_sns\_topic\_arn | SNS topic ARN for generated alarms | `string` | n/a | yes |
 | aws\_config\_changes | Toggle AWS Config changes alarm | `bool` | `true` | no |
 | cloudtrail\_cfg\_changes | Toggle Cloudtrail config changes alarm | `bool` | `true` | no |
