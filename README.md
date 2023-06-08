@@ -39,18 +39,12 @@ module "cloudtrail_alarms" {
 }
 ```
 
-## Terraform Versions
-
-Terraform 0.13. Pin module version to `~> 2.X`. Submit pull-requests to `master` branch.
-
-Terraform 0.12. Pin module version to `~> 1.X`. Submit pull-requests to `terraform012` branch.
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.13.0 |
+| terraform | >= 1.0 |
 | aws | >= 3.0 |
 
 ## Providers
